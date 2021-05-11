@@ -1,0 +1,46 @@
+-- Company :      HP 
+ -- Project :      JUKEBOX 
+ -- Author :       Karthick D  
+ -- Date Created : Wednesday, July 6, 2016 15:02:24 
+ -- Target DBMS : Hive 0.12 
+ 
+ 
+ 
+ 
+ -- TABLE: Stage_Fact_Quote_Detail_Integrated_Call_Center 
+DROP Table IF EXISTS Stage_Sales_Opportunity.Stage_Fact_Quote_Detail_Integrated_Call_Center;
+CREATE EXTERNAL Table Stage_Sales_Opportunity.Stage_Fact_Quote_Detail_Integrated_Call_Center
+(
+Shopper_Identifier varchar(40) ,
+Quote_Identifier int,
+Sequence_Number int,
+Big_Deal_Identifier varchar(25),
+Quote_Quantity int,
+Unit_Price_USD_Amount double,
+Parent_Stock_keeping_Unit_Identifier int,
+Partl_Number_Identifier varchar(20),
+Changes_Timestamp timestamp,
+Modified_By_Logon_Name  varchar(255),
+External_Price_USD_Amount double,
+Part_Family_Description varchar(20),
+Discount_USD_Amount double,
+Discount_Percent int,
+Reason_Code_Description varchar(20),
+Group_Name varchar(3),
+Item_Number int,
+Unit_Discount_Code varchar(15),
+Unit_Discount_USD_Amount double,
+Unit_Cost_USD_Amount double,
+Unit_Description varchar(950),
+Line_Item_Comment_Text varchar(350),
+Open_Market_Indicator varchar(1),
+Category_Number int,
+Category_Description varchar(150),
+Clas_Number int,
+Company_Code varchar(5),
+Source_System_Identifier int,
+Source_System_Batch_Identifier int,
+Load_Job_Number int,
+Insert_GMT_Timestamp TIMESTAMP,  
+Update_GMT_Timestamp TIMESTAMP
+) row format delimited fields terminated by '|' STORED AS TEXTFILE LOCATION '/sales/working/Stage_Fact_Quote_Detail_Integrated_Call_Center';
