@@ -1,0 +1,61 @@
+
+$1,$2
+12345
+xyz_20171019
+
+
+PIG UDF:
+
+Filter Functions − The filter functions are used as conditions in filter statements. These functions accept a Pig value as input and return a Boolean value.
+
+Eval Functions − The Eval functions are used in FOREACH-GENERATE statements. These functions accept a Pig value as input and return a Pig result.
+
+Algebraic Functions − The Algebraic functions act on inner bags in a FOREACHGENERATE statement. These functions are used to perform full MapReduce operations on an inner bag.
+
+
+sample program to convert into upper case:
+
+step1: wite the program
+step2: register the jar by opening pig in local mode
+          pig –x local 
+		  REGISTER PATH
+		  DEFINE sample_eval Sample_Eval();
+
+		  
+		  upper_name=  foreach employee1 generate sample_eval(NAME)
+		  
+	
+import java.io.IOException; 
+import org.apache.pig.EvalFunc; 
+import org.apache.pig.data.Tuple; 
+ 
+import java.io.IOException; 
+import org.apache.pig.EvalFunc; 
+import org.apache.pig.data.Tuple;
+
+public class Sample_Eval extends EvalFunc<String>{ 
+
+   public String exec(Tuple input) throws IOException {   
+      if (input == null || input.size() == 0)      
+      return null;      
+      String str = (String)input.get(0);      
+      return str.toUpperCase();  
+   } 
+}
+
+
+
+Filter Eval Function:
+
+
+import java.io.IOException;
+import java.util.Map;
+import org.apache.pig.FilterFunc;
+import org.apache.pig.backend.executionengine.ExecException;
+import org.apache.pig.data.DataBag;
+import org.apache.pig.data.Tuple;
+import org.apache.pig.data.DataType;
+import org.apache.pig.impl.util.WrappedIOException;
+
+
+
